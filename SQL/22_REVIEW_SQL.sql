@@ -55,51 +55,9 @@ HAVING COUNT(*) NOT IN (1,2)
 ORDER BY ShipCity
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+SELECT ShipCity, COUNT(*) AS "SỐ ĐƠN HÀNG"
+FROM Orders
+WHERE OrderDate BETWEEN '1997-4-1' AND '1997-8-31' AND ShippedDate IS NOT NULL
+GROUP BY ShipCity
+HAVING COUNT(*) > 2
+ORDER BY ShipCity
