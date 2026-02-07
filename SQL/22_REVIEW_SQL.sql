@@ -1,0 +1,105 @@
+﻿-- BT1: HÃY CHO BIẾT NHỮNG KHÁCH HÀNG NÀO ĐÃ ĐẶT NHIỀU HƠN 20 ĐƠN HÀNG , SẮP XẾP THEO THỨ TỰ TỔNG SỐ ĐƠN HÀNG GIẢM DẦN
+SELECT CustomerID, COUNT(*) AS "TỔNG SỐ ĐƠN HÀNG"
+FROM Orders
+GROUP BY CustomerID
+HAVING COUNT(*) > 20
+ORDER BY COUNT(*) DESC
+
+-- BT2: HÃY LỌC RA CÁC NHÂN VIÊN CÓ TỔNG SỐ ĐƠN HÀNG LỚN HƠN HOẶC BẰNG 100, SẮP XẾP THEO TỔNG SỐ ĐƠN HÀNG GIẢM DẦN
+SELECT EmployeeID, COUNT(*) AS "TỔNG SỐ ĐƠN HÀNG"
+FROM Orders
+GROUP BY EmployeeID
+HAVING COUNT(*) >= 100
+ORDER BY COUNT(*) DESC
+
+-- BT3: HÃY CHO BIẾT NHỮNG THỂ LOẠI NÀO CÓ SỐ SẢN PHẨM KHÁC NHAU LỚN HƠN 11
+SELECT CategoryID, COUNT(*) AS "TỔNG SỐ SẢN PHẨM"
+FROM Products
+GROUP BY CategoryID
+HAVING COUNT(*) > 11
+
+-- BT4: HÃY CHO BIẾT NHỮNG THỂ LOẠI NÀO CÓ TỔNG SỐ LƯỢNG SẢN PHẨM TRONG KHO LỚN HƠN 350
+SELECT CategoryID, SUM(UnitsInStock) AS "TỔNG SỐ SẢN PHẨM TỒN KHO"
+FROM Products
+GROUP BY CategoryID
+HAVING SUM(UnitsInStock) > 350
+
+-- BT5: HÃY CHO BIẾT NHỮNG QUỐC GIA NÀO CÓ NHIỀU HƠN 7 KHÁCH HÀNG
+SELECT Country, COUNT(*) AS "TỔNG SỐ KHÁCH HÀNG"
+FROM Customers
+GROUP BY Country
+HAVING COUNT(*) > 7
+
+-- BT6: HÃY CHO BIẾT NHỮNG NGÀY NÀO CÓ NHIỀU HƠN 5 ĐƠN HÀNG ĐƯỢC GIAO, SẮP XẾP TĂNG DẦN THEO NGÀY GIAO HÀNG
+SELECT ShippedDate, COUNT(*) AS "TỔNG SỐ ĐƠN HÀNG"
+FROM Orders
+WHERE ShippedDate IS NOT NULL
+GROUP BY ShippedDate
+HAVING COUNT(*) > 5
+ORDER BY ShippedDate
+
+-- BT7: LẤY RA NHỮNG QUỐC GIA NÀO BẮT ĐẦU BẰNG CHỮ 'A' HOẶC 'G' VÀ CÓ TỔNG SỐ LƯỢNG ĐƠN HÀNG > 29
+SELECT ShipCountry, COUNT(*) AS "TỔNG SỐ ĐƠN HÀNG" 
+FROM Orders
+WHERE ShipCountry LIKE '[AG]%'
+GROUP BY ShipCountry
+HAVING COUNT(*) > 29
+ORDER BY COUNT(*) DESC
+
+-- BT8: HÃY CHO BIẾT NHỮNG THÀNH PHỐ NÀO CÓ SỐ LƯỢNG ĐƠN HÀNG ĐƯỢC GIAO LÀ KHÁC 1 VÀ 2, NGÀY ĐẶT HÀNG TỪ NGÀY '1997-04-01' ĐẾN '1997-08-31'
+SELECT ShipCity, COUNT(*) AS "SỐ ĐƠN HÀNG"
+FROM Orders
+WHERE OrderDate BETWEEN '1997-4-1' AND '1997-8-31' AND ShippedDate IS NOT NULL
+GROUP BY ShipCity
+HAVING COUNT(*) NOT IN (1,2)
+ORDER BY ShipCity
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
