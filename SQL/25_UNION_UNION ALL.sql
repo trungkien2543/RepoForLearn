@@ -1,0 +1,92 @@
+﻿-- TỪ BẢNG ORDER DETAILS HÃY LIỆT KÊ CÁC ĐƠN ĐẶT HÀNG CÓ UNITPRICE NẰM TRONG PHẠM VI TỪ 100 ĐẾN 200
+-- I. 22
+SELECT OrderID
+FROM [Order Details]
+WHERE UnitPrice BETWEEN 100 AND 200
+
+-- ĐƯA RA CÁC ĐƠN ĐẶT HÀNG CÓ QUANTITY BẰNG 10 HOẶC 20
+-- II. 433
+SELECT OrderID
+FROM [Order Details]
+WHERE Quantity IN (10, 20)
+
+-- TỪ BẢNG ORDER DETAILS HÃY LIỆT KÊ CÁC ĐƠN ĐẶT HÀNG CÓ UNITPRICE NẰM TRONG PHẠM VI TỪ 100 ĐẾN 200
+-- VÀ ĐƯA RA CÁC ĐƠN ĐẶT HÀNG CÓ QUANTITY BẰNG 10 HOẶC 20
+-- III. 7
+SELECT OrderID
+FROM [Order Details]
+WHERE Quantity IN (10, 20) AND UnitPrice BETWEEN 100 AND 200
+
+-- TỪ BẢNG ORDER DETAILS HÃY LIỆT KÊ CÁC ĐƠN ĐẶT HÀNG CÓ UNITPRICE NẰM TRONG PHẠM VI TỪ 100 ĐẾN 200
+-- HOẶC CÁC ĐƠN ĐẶT HÀNG CÓ QUANTITY BẰNG 10 HOẶC 20
+-- IV. 448
+SELECT OrderID
+FROM [Order Details]
+WHERE Quantity IN (10, 20) OR UnitPrice BETWEEN 100 AND 200
+
+-- TỪ BẢNG ORDER DETAILS HÃY LIỆT KÊ CÁC ĐƠN ĐẶT HÀNG CÓ UNITPRICE NẰM TRONG PHẠM VI TỪ 100 ĐẾN 200
+-- HOẶC CÁC ĐƠN ĐẶT HÀNG CÓ QUANTITY BẰNG 10 HOẶC 20
+-- THÊM TỪ KHÓA DISTINCT
+-- V. 360
+SELECT DISTINCT OrderID
+FROM [Order Details]
+WHERE Quantity IN (10, 20) OR UnitPrice BETWEEN 100 AND 200
+
+-- UNION DÙNG ĐỂ KẾT HỢP TẬP KẾT QUẢ CỦA HAI HAY NHIỀU CÂU LỆNH
+-- UNION ALL CHO PHÉP CÁC KẾT QUẢ BỊ LẶP LẠI
+--👉 UNION KHÔNG quan tâm tên cột
+--👉 Nó chỉ quan tâm:
+
+--✅ SỐ LƯỢNG CỘT
+--✅ KIỂU DỮ LIỆU TƯƠNG THÍCH
+--✅ THỨ TỰ CỘT
+
+
+-- V = I OR II = 360
+SELECT OrderID FROM [Order Details] WHERE UnitPrice BETWEEN 100 AND 200
+UNION
+SELECT OrderID FROM [Order Details] WHERE Quantity IN (10, 20)
+
+-- IV = I OR II = 455
+SELECT OrderID FROM [Order Details] WHERE UnitPrice BETWEEN 100 AND 200
+UNION ALL
+SELECT OrderID FROM [Order Details] WHERE Quantity IN (10, 20)
+
+-- LẤY TẤT CẢ QUỐC GIA TỪ 2 TABLE SUPPLIERS VÀ CUSTOMERS
+SELECT DISTINCT Country
+FROM Suppliers
+UNION
+SELECT DISTINCT Country 
+FROM Customers
+
+
+SELECT DISTINCT Country
+FROM Suppliers
+UNION ALL
+SELECT DISTINCT Country 
+FROM Customers
+
+-- BT1
+SELECT City, Country
+FROM Customers
+WHERE Country LIKE 'U%'
+UNION
+SELECT City, Country
+FROM Suppliers
+WHERE City = 'LONDON'
+UNION
+SELECT ShipCity, ShipCountry
+FROM Orders
+WHERE ShipCountry = 'USA'
+
+-- LẤY RA TẤT CẢ CÁC QUỐC GIA TỪ 3 BẢNG TRÊN SAO VỚI CÁC ĐIỀU KIỆN LÀ COUNTRY BẮT ĐẦU BẰNG U HOẶC CITY LÀ LONDON HOẶC COUNTRY LÀ USA
+
+
+
+
+
+
+
+
+
+
