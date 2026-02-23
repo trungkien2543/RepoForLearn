@@ -1,0 +1,83 @@
+﻿-- ĐỆ QUY SỬ DỤNG CTE
+-- WITH CTE_NAME (CL1, CL2, ...) AS (
+--   /* ANCHOR MEMBER */
+--   SELECT ...
+--   FROM ...
+--   WHERE ...
+--   UNION ALL
+--   /* RECURSIVE MEMBER */
+--   SELECT ...
+--   FROM ...
+--   JOIN CTE_NAME ON ...
+--)
+--SELECT ...
+--FROM CTE_NAME
+
+WITH FIBO(PREV_N, N) AS (
+	SELECT 
+		0 AS PREV_N,
+		1 AS N
+
+	UNION ALL
+	SELECT 
+		N AS PREV_N,
+		PREV_N + N AS N
+	FROM FIBO
+)
+SELECT * FROM FIBO
+OPTION (MAXRECURSION 5)
+
+-- GIAI THỪA
+WITH GIAI_THUA AS (
+ -- KHOI TAO
+ SELECT 
+	1 AS STT,
+	1 AS GIAI_THUA
+ 
+ UNION ALL 
+
+ -- DE QUY
+ SELECT 
+	STT+1 AS STT,
+	(STT+1) * GIAI_THUA AS GIAI_THUA
+ FROM GIAI_THUA
+)
+SELECT * FROM GIAI_THUA
+OPTION (MAXRECURSION 5)
+
+
+
+
+-- HIỂN THỊ RA ĐƯỢC CẤU TRÚC CỦA CÔNG TY
+-- TRONG ĐÓ "REPORTSTO" CHỈ LÀ MÃ CỦA NGƯỜI QUẢN LÝ
+DECLARE @EMPLOYEE_ID INT
+SET @EMPLOYEE_ID = 2;
+
+WITH E_CTE AS (
+	-- KHỞI TẠO
+	SELECT EmployeeID, E.FirstName + ' ' + E.LastName AS 'NAME', ReportsTo AS 'MANAGER_ID', 0 AS 'LEVEL'
+	FROM Employees AS E
+	WHERE E.EmployeeID = @EMPLOYEE_ID
+
+	UNION ALL
+	-- ĐỆ QUY
+	SELECT E.EmployeeID, E.FirstName + ' ' + E.LastName AS 'NAME', ReportsTo AS 'MANAGER_ID', LEVEL + 1 AS 'LEVEL'
+	FROM Employees AS E
+	JOIN E_CTE ON E_CTE.EmployeeID = E.ReportsTo
+)
+SELECT * FROM E_CTE
+OPTION (MAXRECURSION 500)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
