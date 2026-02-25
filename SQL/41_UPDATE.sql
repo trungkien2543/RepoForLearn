@@ -1,0 +1,24 @@
+﻿-- CẬP NHẬT DỮ LIỆU
+
+--UPDATE TABLE_NAME
+--SET COL1 = VAL1, COL2 = VAL2, ...
+--WHERE CONDITION;
+
+-- CẬP NHẬT THÔNG TIN KHÁCH HÀNG 'ALFKI'
+UPDATE Customers
+SET Address = 'NEW ADDRESS'
+WHERE CustomerID = 'ALFKI'
+
+-- TĂNG GIÁ CỦA TOÀN BỘ SẢN PHẦM LÊN 10%
+SELECT *
+INTO PRODUCT_1
+FROM Products
+
+UPDATE PRODUCT_1
+SET UnitPrice = UnitPrice * 1.1
+
+
+
+
+
+

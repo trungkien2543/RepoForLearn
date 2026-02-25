@@ -1,0 +1,42 @@
+﻿-- CÚ PHÁP
+
+--INSERT INTO TABLE_NAME (COL1, COL2, COL3, ...)
+--VALUES (VAL1, VAL2, VAL3, ...)
+
+--INSERT INTO TABLE_NAME
+--VALUES (VAL1, VAL2, VAL3, ...)
+
+-- THÊM 1 KHÁCH HÀNG MỚI
+INSERT INTO Customers ([CustomerID],[CompanyName],[ContactName],[Phone])
+VALUES ('KH123', 'TITV.VN', 'LE NHAT TUNG', '0123456789')
+
+INSERT INTO Customers
+VALUES ('KH456', 'TITV.VN', 'LE NHAT TUNG', '0123456789','-',NULL,NULL,NULL,NULL,NULL,NULL)
+
+-- THÊM NHIỀU KHÁCH HÀNG MỚI CÙNG LÚC
+INSERT INTO Customers ([CustomerID],[CompanyName],[ContactName],[Phone])
+VALUES 
+('KH124', 'TITV.VN', 'LE NHAT TUNG', '0123456789'),
+('KH125', 'TITV.VN', 'LE NHAT TUNG', '0123456789'),
+('KH126', 'TITV.VN', 'LE NHAT TUNG', '0123456789'),
+('KH127', 'TITV.VN', 'LE NHAT TUNG', '0123456789');
+
+-- BÀI TẬP
+-- THÊM ĐƠN HÀNG MỚI
+INSERT INTO Orders ([CustomerID],[EmployeeID],[OrderDate],[ShipVia])
+VALUES ('KH124','1',GETDATE(),'1')
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
