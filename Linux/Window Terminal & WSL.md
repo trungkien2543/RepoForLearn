@@ -21,7 +21,7 @@
   - cd -: quay lại lần trước đó
   - cd: để quay ra home
 - clear: xóa giao diện đang làm việc
-- touch: tạo ra một file
+- touch: tạo ra một file (lưu ý: tạo file có khoảng trắng thì bỏ vào '')
 - vi: tạo ra một file mới và cho phép chỉnh sửa file trong đó
   - :q để thoát
   - :wq hoặc :x để lưu và thoát
