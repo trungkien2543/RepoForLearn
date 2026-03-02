@@ -14,16 +14,29 @@
 
 ## Các lệnh Linux cơ bản
 
-- ls
-- cd
-- clear
-- touch
-- vi
-- mkdir
-- cat
-- tail
-- grep
-- echo
+- ls: liệt kê file và folder trong thư mục
+- cd (change directory): di chuyển vào thư mục khác
+  - cd + tab: để xem các thư mục có thể di chuyển vào và để hiển thị nhanh hơn
+  - cd ..: để quay trở lại 1 cấp
+  - cd -: quay lại lần trước đó
+  - cd: để quay ra home
+- clear: xóa giao diện đang làm việc
+- touch: tạo ra một file
+- vi: tạo ra một file mới và cho phép chỉnh sửa file trong đó
+  - :q để thoát
+  - :wq hoặc :x để lưu và thoát
+  - :q! để thoát mà không lưu
+- mkdir (make directory): tạo ra thư mục
+  - mkdir -p: tạo ra thư mục gồm nhiều cấp
+- cat (concatenate): xem nội dung file
+  - cat <tên file> > <tên file mới>: ghép nội dung các file vào một file mới
+- tail: xem những dòng cuối trong 1 file
+  - tail -n i filename (i là số dòng muốn lấy)
+  - tail -f filename (để tiếp tục theo dõi những thay đổi trong file)
+- grep: tìm kiếm từ ở trong stout
+- echo: in ra stout nội dung
+  - echo <nội dung> > tên file (ghi đè nội dung cũ)
+  - echo <nội dung> >> tên file (không ghi đè)
 - cp
 - mv
 - rmdir
