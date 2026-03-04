@@ -37,27 +37,35 @@
 - echo: in ra stout nội dung
   - echo <nội dung> > tên file (ghi đè nội dung cũ)
   - echo <nội dung> >> tên file (không ghi đè)
-- cp
-- mv
-- rmdir
-- rm
-- sudo
-- chmod
-- chown
-- wget
-- apt - get
+- cp: copy file
+  - cp -r: để copy thư mục
+- mv: di chuyển, cũng có thể dùng để đổi tên khi trong cùng thư mục cha
+- rmdir: dùng để xóa thư mục trống
+- rm: xóa file
+  - rm -r: xóa folder và toàn bộ file trong folder 
+- man: tra cứu thông tin về lệnh
+- sudo: lấy quyền root
+- chmod: gán quyền cho file hoặc thư mục
+  - có 3 vai trò: User, Group, Other
+  - có 3 quyền: read, write, execute
+- chownL: đổi chủ sở hữu
+- wget: dùng để tải file
+- apt: lệnh giúp quản lý các thư viện trong máy ubuntu
 - history
-- kill
-- ping
-- uname
-- passwd
-- top
-- df
-- free
+- kill: kết thúc tiến trình
+  - -9: dùng để kết thúc tiến trình ngay lập tức
+  - -15: kết thúc nhưng cho thời gian để lưu lại dữ liệu
+- ping: kiểm tra tốc độ kết nối tới máy chủ
+- uname (unix name): xem thông tin kernel của hệ điều hành 
+- passwd: đổi mật khẩu cho tài khoản hiện tại
+- top: xem chi tiết tiến trình như trên task manager trên window
+- df: kiểm tra dung lượng còn trống
+- free: kiểm tra dung lượng RAM, Swap
 
 > Mẹo
 - Nhấn `tab` để auto complete
 - Nhấn `ctrl + a` / `ctrl + e` để di chuyển về đầu/cuối command
+- `ctrl + ->` / `ctrl + <-` để di chuyển nhanh qua các từ
 - Chạy đồng thời nhiều commands: `command-1;command-2;command-3`, `command-1 && command-2 && command-3`
 
 ## Chạy dự án ReactJS
