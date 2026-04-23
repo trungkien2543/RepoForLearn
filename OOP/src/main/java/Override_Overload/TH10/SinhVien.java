@@ -5,6 +5,4 @@ public class SinhVien extends HocVien{
 
         System.out.println("a con");
     }
-
-    // Override
 }

@@ -7,5 +7,5 @@ public class HocVien {
         System.out.println("a cha");
     }
 
-    // Hien tuong OL
+
 }
