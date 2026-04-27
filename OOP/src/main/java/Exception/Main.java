@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Chay tiep den day roi");
 
 //        try {
-//            FileInputStream f = new FileInputStream("C://a.txt");
+//            FileInputStream f = new FileInputStream("TH1://a.txt");
 //        } catch (FileNotFoundException e) {
 //            e.printStackTrace(); // In ra ngan xep goi ham
 //        }
