@@ -1,8 +1,14 @@
 package com.springmasterclass.study;
 
+import lombok.extern.log4j.Log4j2;
+import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.core.env.Environment;
 
+
+@Log4j2
 @SpringBootApplication
 public class StudyApplication {
 
@@ -10,7 +16,10 @@ public class StudyApplication {
 		SpringApplication.run(StudyApplication.class, args);
 	}
 
-	// Starter: La cac goi Combo gom san thu vien
-	// Auto-Configuration: La co che tu dong thiet lap Bean dua tren nhung thu vien co san trong du an
-	// @Conditional: La bo dieu kien de Spring quyet dinh xem co nen tu cau hinh hay khong
+	@Bean
+	ApplicationRunner applicationRunner(Environment environment) {
+		return args -> {
+			log.info("message from application.properties " + environment.getProperty("POSTGRES_USER"));
+		};
+	}
 }
