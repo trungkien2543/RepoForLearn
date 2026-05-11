@@ -1,10 +1,70 @@
 package com.springmasterclass.study.service.impl;
 
 
+import com.springmasterclass.study.dto.record.UserRequest;
+import com.springmasterclass.study.dto.record.UserResponse;
+import com.springmasterclass.study.dto.request.UserRq;
+import com.springmasterclass.study.entity.User;
+import com.springmasterclass.study.mapper.UserMapper;
+import com.springmasterclass.study.repository.UserRepository;
+import com.springmasterclass.study.service.UserService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
-public class IUserService {
+@RequiredArgsConstructor
+public class IUserService implements UserService {
 
+    private final UserRepository userRepository;
 
+    private final UserMapper userMapper;
+
+    @Override
+    public void create(UserRequest rq) {
+        userRepository.save(mapToEntity(rq));
+    }
+
+    @Override
+    public void update(String id, UserRequest rq) {
+        Optional<User> user = userRepository.findById(id);
+        if(user.isEmpty()){
+            throw new IllegalArgumentException("User not exist");
+        }
+
+        User userUpdate = user.get();
+        userUpdate.setName(rq.fullName());
+        userUpdate.setPhone(rq.phone());
+        userUpdate.setEmail(rq.email());
+        userUpdate.setPassword(rq.password());
+        userUpdate.setUsername(rq.username());
+        userRepository.save(userUpdate);
+    }
+
+    @Override
+    public List<UserResponse> index() {
+        List<User> list = userRepository.findAll();
+        return list.stream().map(this::mapToResponseOfMapStruct).toList();
+    }
+
+    @Override
+    public void delete(String id) {
+        Optional<User> user = userRepository.findById(id);
+        if (user.isEmpty()) {
+            throw new IllegalArgumentException("User not exist");
+        }
+
+        userRepository.delete(user.get());
+
+    }
+
+    public User mapToEntity(UserRequest userRq){
+        return userMapper.toEntity(userRq);
+    }
+
+    private UserResponse mapToResponseOfMapStruct(User user){
+        return userMapper.toResponse(user);
+    }
 }
