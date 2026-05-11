@@ -1,11 +1,11 @@
 package com.springmasterclass.study.controller;
 
-import com.springmasterclass.study.dto.record.UserRequest;
 import com.springmasterclass.study.dto.record.UserResponse;
-import com.springmasterclass.study.dto.request.UserRq;
-import com.springmasterclass.study.dto.response.UserRp;
+import com.springmasterclass.study.dto.record.UserRequest;
 import com.springmasterclass.study.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -25,7 +25,7 @@ public class UserController {
     }
 
     @PostMapping
-    public ResponseEntity<String> createUser(@RequestBody UserRequest userRq){
+    public ResponseEntity<String> createUser(@Valid @RequestBody UserRequest userRq){
         userService.create(userRq);
         return new ResponseEntity<>("Create a new user sucssessfully", HttpStatus.OK);
     }

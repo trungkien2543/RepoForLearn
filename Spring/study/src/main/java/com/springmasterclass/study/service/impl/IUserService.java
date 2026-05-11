@@ -3,7 +3,6 @@ package com.springmasterclass.study.service.impl;
 
 import com.springmasterclass.study.dto.record.UserRequest;
 import com.springmasterclass.study.dto.record.UserResponse;
-import com.springmasterclass.study.dto.request.UserRq;
 import com.springmasterclass.study.entity.User;
 import com.springmasterclass.study.mapper.UserMapper;
 import com.springmasterclass.study.repository.UserRepository;
@@ -35,7 +34,7 @@ public class IUserService implements UserService {
         }
 
         User userUpdate = user.get();
-        userUpdate.setName(rq.fullName());
+        userUpdate.setName(rq.name());
         userUpdate.setPhone(rq.phone());
         userUpdate.setEmail(rq.email());
         userUpdate.setPassword(rq.password());
